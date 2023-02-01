@@ -240,8 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472073abeb37942bc90d1ca06ac0c7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingLeft: 0
   timeTillMaxSpeed: 0.75
   maxSpeed: 6
+  sprintMultiplier: 2
 --- !u!114 &464240224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2207628cff6274e968a51311edc41b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFacingLeft: 0
 --- !u!50 &464240225
 Rigidbody2D:
   serializedVersion: 4

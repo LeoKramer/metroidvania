@@ -10,6 +10,8 @@ namespace Metroidvania
         protected float timeTillMaxSpeed;
         [SerializeField]
         protected float maxSpeed;
+        [SerializeField]
+        protected float sprintMultiplier;
 
         private float acceleration;
         private float currentSpeed;
@@ -25,6 +27,7 @@ namespace Metroidvania
         protected virtual void Update()
         {
             MovementPressed();
+            SprintingHeld();
         }
 
         protected virtual bool MovementPressed()
@@ -36,6 +39,11 @@ namespace Metroidvania
             }
 
             return false;
+        }
+
+        protected virtual bool SprintingHeld()
+        {
+            return Input.GetKey(KeyCode.LeftShift);
         }
 
         protected virtual void FixedUpdate()
@@ -59,18 +67,43 @@ namespace Metroidvania
                 currentSpeed = 0;
             }
 
+            SpeedMultiplier();
             rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
         }
 
         protected virtual void CheckDirection()
         {
-            if (currentSpeed > maxSpeed)
+            if(currentSpeed > 0)
             {
-                currentSpeed = maxSpeed;
+                if (character.isFacingLeft)
+                {
+                    character.isFacingLeft = false;
+                    Flip();
+                }
+                if (currentSpeed > maxSpeed)
+                {
+                    currentSpeed = maxSpeed;
+                }
             }
-            else if (currentSpeed < -maxSpeed)
+            else if (currentSpeed < 0)
             {
-                currentSpeed = -maxSpeed;
+                if (!character.isFacingLeft)
+                {
+                    character.isFacingLeft = true;
+                    Flip();
+                }
+                if (currentSpeed < -maxSpeed)
+                {
+                    currentSpeed = -maxSpeed;
+                }
+            }
+        }
+
+        protected virtual void SpeedMultiplier()
+        {
+            if (SprintingHeld())
+            {
+                currentSpeed *= sprintMultiplier;
             }
         }
     }
