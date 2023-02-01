@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 464240225}
   - component: {fileID: 464240224}
   - component: {fileID: 464240223}
+  - component: {fileID: 464240229}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFacingLeft: 0
+  isGrounded: 0
   timeTillMaxSpeed: 0.75
   maxSpeed: 6
   sprintMultiplier: 2
@@ -257,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFacingLeft: 0
+  isGrounded: 0
 --- !u!50 &464240225
 Rigidbody2D:
   serializedVersion: 4
@@ -373,6 +376,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &464240229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464240222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e513b85ebad214937a3f7c8e6458b614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFacingLeft: 0
+  isGrounded: 0
+  jumpForce: 250
+  distanceToCollider: 0.05
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +574,7 @@ GameObject:
   - component: {fileID: 1573032874}
   - component: {fileID: 1573032873}
   - component: {fileID: 1573032872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
