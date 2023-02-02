@@ -56,6 +56,11 @@ namespace Metroidvania
 
             return false;
         }
+
+        protected virtual bool Falling(float velocity)
+        {
+            return (!isGrounded && rb.velocity.y < velocity);
+        }
     }
 }
 
